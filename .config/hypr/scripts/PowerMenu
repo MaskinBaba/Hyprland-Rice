@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+selected=$(echo "Turn Display Off
+Shutdown
+Reboot
+Logout
+
+Reload Hyprland
+Toggle Caffeine
+Switch Audio Output
+Connect to OnePlus Neckband
+Rotate Screen
+Next Wallpaper" | rofi -dmenu -p "Power: " -config "~/.config/rofi/config.rasi")
+
+if [[ -z $selected ]]; then
+    exit
+elif [[ "$selected" == *"Shutdown"* ]]; then
+    shutdown now
+elif [[ "$selected" == *"Reboot"* ]]; then
+    reboot
+elif [[ "$selected" == *"Logout"* ]]; then
+    kill -9 -1
+elif [[ "$selected" == *"Turn Display Off"* ]]; then
+    hyprctl dispatch dpms off
+elif [[ "$selected" == *"Toggle Caffeine"* ]]; then	
+	notify-send "Deprecated."
+#	sh ~/.config/hypr/scripts/caffeine.sh -t
+elif [[ "$selected" == *"Reload Hyprland"* ]]; then
+	hyprctl reload && notify-send "Reloaded."
+elif [[ "$selected" == *"Switch Audio Output"* ]]; then
+	notify-send "Deprecated."
+# 	sh ~/.scripts/audio-output-switch.sh
+elif [[ "$selected" == *"Connect to OnePlus Neckband"* ]]; then
+	sh ~/.config/hypr/scripts/neckbandconnect
+elif [[ "$selected" == *"Rotate Screen"* ]]; then
+	notify-send "Deprecated."
+elif [[ "$selected" == *"Next Wallpaper"* ]]; then
+	swww img Pictures/Wallpapers/$(ls Pictures/Wallpapers | shuf -n 1) && notify-send "Done."
+fi
