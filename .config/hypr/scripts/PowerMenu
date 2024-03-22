@@ -9,7 +9,9 @@ Logout
 Reload Hyprland
 Toggle Caffeine
 Switch Audio Output
+Altair Storage
 Connect to OnePlus Neckband
+Launch Waydroid Session
 Rotate Screen
 Next Wallpaper" | rofi -dmenu -p "Power: " -config "~/.config/rofi/config.rasi")
 
@@ -31,8 +33,12 @@ elif [[ "$selected" == *"Reload Hyprland"* ]]; then
 elif [[ "$selected" == *"Switch Audio Output"* ]]; then
 	notify-send "Deprecated."
 # 	sh ~/.scripts/audio-output-switch.sh
+elif [[ "$selected" == *"Altair"* ]]; then
+ 	sh ~/.config/hypr/scripts/sshftp.sh
 elif [[ "$selected" == *"Connect to OnePlus Neckband"* ]]; then
 	sh ~/.config/hypr/scripts/neckbandconnect
+elif [[ "$selected" == *"Waydroid"* ]]; then
+	sh ~/.config/hypr/scripts/waydroid.sh
 elif [[ "$selected" == *"Rotate Screen"* ]]; then
 	notify-send "Deprecated."
 elif [[ "$selected" == *"Next Wallpaper"* ]]; then

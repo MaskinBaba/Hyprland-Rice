@@ -8,20 +8,16 @@
     "gtk-layer-shell": true,
     "height": 0,
     "modules-left": [
-        "wlr/workspaces",
-	"mpd",
+        "hyprland/workspaces",
 	"mpris"
 	// "custom/weather"
     ],
-/*    "modules-center": [
-	"mpris", 
-	"mpd"
+    "modules-center": [ 
+        "hyprland/window"
     ],
-*/
     "modules-right": [
         "tray",
         // "custom/updates",
-	"idle_inhibitor",
 	"bluetooth",
         // "custom/language",
 	"backlight",
@@ -29,15 +25,32 @@
         "pulseaudio#microphone",
 	"cpu",
 	"temperature",
-	"memory",
 	"network",
 	"battery",
 	"clock"
     ],
 
     "hyprland/window": {
-        "format": "{}"
+         "format": "{}",
+	 "max-length": 50,
+	 "tooltip": true
     },
+    "hyprland/workspaces": {
+         "disable-scroll": false,
+         "all-outputs": true,
+         "warp-on-scroll": false,
+         "format": "{name}"
+         //"format-icons": {
+         //    "1": "<U+F120>",
+         //    "2": "<U+F268>",
+         //    "3": "<U+F121>",
+         //    "4": "<U+F1BC>",
+         //    "5": "<U+F075>",
+         //    "urgent": "<U+F06A>",
+         //    "focused": "<U+F192>",
+         //    "default": "<U+F111>"
+         //}
+     },
     "wlr/workspaces": {
         "on-scroll-up": "hyprctl dispatch workspace e+1",
         "on-scroll-down": "hyprctl dispatch workspace e-1",
@@ -95,6 +108,7 @@
     },
     "network": {
         "format": "{ifname}",
+        "format-wifi": "{essid}",
         // "format-wifi": "{essid} ({signalStrength}%)",
         "format-ethernet": "{ifname}",
         "format-disconnected": "", //An empty format will hide the module.
@@ -113,7 +127,7 @@
 		"mpv": "🎵",
 		"spotify": ""
 	},
-	"max-length": 10,
+	"max-length": 35,
 	"status-icons": {
 		"paused": "⏸"
 	}
@@ -137,13 +151,13 @@
     },
     "cpu": {
         "interval": 10,
-        "format": " {usage}%",
+        "format": "  {usage}%",
         "max-length": 10,
         "on-click": ""
     },
     "memory": {
         "interval": 30,
-        "format": " {percentage}%",
+        "format": " {percentage}%",
         "format-alt":" {used}GB",
         "max-length": 10
     },
@@ -173,7 +187,12 @@
     },
     "clock": {
         "format": "{:%R}",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    	"calendar": {
+		"format": {
+			"today":      "<span color='#ff5c81'><b><u>{}</u></b></span>"
+		}
+	}
     },
     "backlight": {
     "device": "amdgpu_bl0",
@@ -182,7 +201,7 @@
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "tooltip": false,
+        "tooltip": true,
         "format-muted": " Muted",
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
@@ -200,18 +219,18 @@
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "tooltip": false,
-        "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
+        "tooltip": true,
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +10%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -10%",
         "scroll-step": 5
     },
     "bluetooth": {
 	// "controller": "controller1", // specify the alias of the controller if there are more than 1 on the system
-	"format": " {status}",
-	"format-disabled": "", // an empty format will hide the module
+	"format": "",
+	"format-disabled": "󰂲", // an empty format will hide the module
 	"format-connected": "󰂱 {num_connections}",
 	"tooltip-format": "{controller_alias}\t{controller_address}",
 	"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
