@@ -146,4 +146,5 @@ configuration {
   }
 }
 /* @theme "/usr/share/rofi/themes/lb.rasi" */
-@theme "/home/maskin/.config/rofi/newtheme.rasi"
+/* @theme "/home/maskin/.config/rofi/newtheme.rasi" */
+@theme "/home/maskin/.cache/wal/colors-rofi-dark.rasi"

@@ -4,12 +4,14 @@ export PATH
 
 # %m%#
 # PROMPT="[%n@%m] %1~ "
-PROMPT="[%n@%m]%(?..%F{9}✖)%f%F{105}%~%f %#"
+PROMPT="%F{4}[%f%n@%m%F{4}]%f%(?..%F{9}✖ )%f%F{1}%~%f %#"
+(cat ~/.cache/wal/sequences &)
 
 alias ls="ls --color=auto"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
+alias s=systemctl
 
 fcd() {
 	cd "$(find -type d | fzf)"
@@ -18,10 +20,27 @@ open() {
 	xdg-open "$(find -type f | fzf)"
 }
 
+testingshit() {
+	komand="$(cat ~/.histfile | fzf)"
+	zsh -c "$komand"
+}
+
+footssh() {
+	if [[ $TERM = "foot" ]]; then
+		TERM=linux ssh $@
+	else
+		ssh $@
+	fi
+}
+
+alias ssh=footssh
+
 autoload -U colors && colors
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+
+EDITOR=vim
 
 # The following lines were added by compinstall
 

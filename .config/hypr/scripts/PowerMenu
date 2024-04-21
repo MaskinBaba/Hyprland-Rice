@@ -4,7 +4,7 @@
 selected=$(echo "Turn Display Off
 Shutdown
 Reboot
-Logout
+Lock
 
 Reload Hyprland
 Toggle Caffeine
@@ -18,9 +18,11 @@ Next Wallpaper" | rofi -dmenu -p "Power: " -config "~/.config/rofi/config.rasi")
 if [[ -z $selected ]]; then
     exit
 elif [[ "$selected" == *"Shutdown"* ]]; then
-    shutdown now
+    # shutdown now
+    systemctl poweroff
 elif [[ "$selected" == *"Reboot"* ]]; then
-    reboot
+    # reboot
+    systemctl reboot
 elif [[ "$selected" == *"Logout"* ]]; then
     kill -9 -1
 elif [[ "$selected" == *"Turn Display Off"* ]]; then
@@ -42,5 +44,7 @@ elif [[ "$selected" == *"Waydroid"* ]]; then
 elif [[ "$selected" == *"Rotate Screen"* ]]; then
 	notify-send "Deprecated."
 elif [[ "$selected" == *"Next Wallpaper"* ]]; then
-	swww img Pictures/Wallpapers/$(ls Pictures/Wallpapers | shuf -n 1) && notify-send "Done."
+  sh ~/.config/hypr/scripts/nextwal.sh
+elif [[ "$selected" == *"Lock"* ]]; then
+  sh ~/.config/hypr/scripts/lock.sh
 fi

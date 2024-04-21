@@ -19,6 +19,7 @@
         "tray",
         // "custom/updates",
 	"bluetooth",
+  "idle_inhibitor",
         // "custom/language",
 	"backlight",
         "pulseaudio",
@@ -197,7 +198,7 @@
     "backlight": {
     "device": "amdgpu_bl0",
     "format": "{icon} {percent}%",
-    "format-icons": ["󰃞", "󰃠"]
+    "format-icons": ["󰃝", "󰃞", "󰃟", "󰃠"]
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",
@@ -210,7 +211,7 @@
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󰋋",
-            "headset": "󰋋",
+            "headset": "󰋎",
             "phone": "",
             "portable": "",
             "car": "",

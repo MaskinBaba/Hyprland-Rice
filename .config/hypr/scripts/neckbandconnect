@@ -1,2 +1,4 @@
 rfkill unblock all
-echo "connect 8C:64:A2:7A:6E:50" | bluetoothctl
+blue=$(echo "connect 8C:64:A2:7A:6E:50" | bluetoothctl)
+
+notify-send "$blue"
