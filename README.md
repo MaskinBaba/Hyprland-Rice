@@ -12,19 +12,7 @@
 * [Dunst](https://archlinux.org/packages/community/x86_64/dunst/)
 * [Pywal](https://github.com/dylanaraps/pywal)
 
-<details>
-    <summary>Screenshots</summary>
-    ![Screenshot1](Preview_1.png)
 
-    ![Screenshot1](Preview_2.png)
-
-    ![Screenshot1](Preview_3.png)
-
-    ![Screenshot1](Preview_4.png)
-
-    ![Screenshot1](Preview_5.png)
-
-</details>
 ## Custom Scripts
 
 Copy the `Scripts` to the environment variable paths or set the path to the `Scripts` folder location.
@@ -33,3 +21,15 @@ Copy the `Scripts` to the environment variable paths or set the path to the `Scr
 #### Fonts used
 * [Font Awesome 5](https://fontawesome.com/download)
 * [Iosevka Nerd Font](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/JetBrainsMono/Ligatures/Regular/complete/JetBrains%20Mono%20Regular%20Nerd%20Font%20Complete%20Mono.ttf)
+
+### Screenshots
+
+![Screenshot1](Preview_1.png)
+
+![Screenshot1](Preview_2.png)
+
+![Screenshot1](Preview_3.png)
+
+![Screenshot1](Preview_4.png)
+
+![Screenshot1](Preview_5.png)
