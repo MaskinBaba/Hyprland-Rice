@@ -1,28 +1,27 @@
 #/usr/bin/sh
 
-wal -q -i ~/Pictures/Wallpapers/currentWalls/
-
-wallpaper=$(cat ~/.cache/wal/wal)
-
-cp ~/.cache/wal/colors.css ~/.config/waybar/colors.css
-
-if [[ $(pidof dunst) > 0 ]]; then
-  killall dunst
-  dunst & disown
+if [ -z "$1" ]
+  then
+    curWal=$(/run/current-system/sw/bin/ls ~/Pictures/Wallpapers/currentWalls | shuf -n 1)
 else
-  dunst & disown
+    curWal=$1
+    echo $1
 fi
+echo $curWal
+
+wal -q -i ~/Pictures/Wallpapers/currentWalls/$curWal
+# sleep 0.1
+wallpaper=$(cat ~/.cache/wal/wal)
+swww img "$wallpaper" --transition-duration=0.1 --transition-fps=60
+if [[ $(pidof dunst) > 0 ]]; then
+  pkill dunst
+fi
+dunst & disown
 
 if [[ $(pidof waybar) > 0 ]]; then
-  killall waybar
-  waybar & disown
-else
-  waybar & disown
+  pkill waybar
 fi
-
-
-
-swww img "$wallpaper" --transition-duration=0.5 --transition-fps=60
-
+# sleep 1
+waybar & disown
 
 notify-send "New Theme and Wallpaper added."

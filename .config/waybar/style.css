@@ -1,4 +1,5 @@
 /* @import 'colors.css'; */
+@import 'colors-waybar.css';
 
 * {
     border: none;
@@ -12,16 +13,20 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0.7);
-    color: #cdd6f4;
+    /* background: rgba(0, 0, 0, 0.7); */
+    background: alpha(@background, 0.8);
+    /*color: #cdd6f4; */
+    color: @foreground;
 }
 
 tooltip {
-    background: #1e1e2e;
-    border-radius: 10px;
-    border-width: 2px;
+    /* background: #1e1e2e; */
+    background: @background;
+    border-radius: 8px;
+    border-width: 0.2px;
     border-style: solid;
-    border-color: #11111b;
+    /* border-color: #11111b; */
+    border-color: @foreground;
 }
 
 #workspaces button {

@@ -13,16 +13,16 @@ Altair Storage
 Connect to OnePlus Neckband
 Launch Waydroid Session
 Rotate Screen
-Next Wallpaper" | rofi -dmenu -p "Power: " -config "~/.config/rofi/config.rasi")
+Next Wallpaper" | rofi -dmenu -p "Power " -config "~/.config/rofi/config.rasi")
 
 if [[ -z $selected ]]; then
     exit
 elif [[ "$selected" == *"Shutdown"* ]]; then
-    # shutdown now
-    systemctl poweroff
+    shutdown now
+    # systemctl poweroff
 elif [[ "$selected" == *"Reboot"* ]]; then
-    # reboot
-    systemctl reboot
+    reboot
+    # systemctl reboot
 elif [[ "$selected" == *"Logout"* ]]; then
     kill -9 -1
 elif [[ "$selected" == *"Turn Display Off"* ]]; then
